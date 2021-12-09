@@ -21,6 +21,12 @@
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
 article,
 aside,
 details,
@@ -36,10 +42,101 @@ summary {
   display: block;
 }
 
+
+.button {
+	/* Сбрасываем дефолтные стили */
+	border: none;
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	/*font-size: 16px;
+	 Можно также использовать любые встроенные и кастомные шрифты, например, отсюда  
+	font-family:'Times New Roman', Times, serif;
+	Тут можно поэкспериментировать */
+	padding: 12px 16px;
+	border-radius: 100px;
+	color: #fff;
+}
+.button:hover {
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover.blue {
+			background: #39a1f4;
+}
+
+.button:hover.purple {
+			background: #a66bbe;
+}
+
+.button:active {
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.button:active.blue {
+			background: #0d8aee;
+}
+
+.button:active.purple {
+			background: #8f4bab;
+}
+.button i {
+		margin-right: 4px;
+}
+
+.button + .button {
+		margin-left: 6px;
+}
+
+.button.blue {
+		background: #2196F3;
+}
+
+.button.purple {
+	background: #9b59b6;
+}
+
+#korzina {
+	/*position: absolute;
+	top: 2px;
+	padding-top:2px;*/
+	margin-top:15px;
+}
+hr {
+	height: 0;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+	
+}
+
+ul.hr li {
+		display: inline; /* Отображать как строчный элемент */
+		margin-right: 5px; /* Отступ слева */
+		border: 1px solid #000; /* Рамка вокруг текста */
+		padding: 3px; /* Поля вокруг текста */
+		
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#selected {
+	color: black;
+}
+
 audio,
 canvas,
 video {
-  display: inline-block;
+	display: inline-block;
 }
 
 audio:not([controls]) {
@@ -335,13 +432,13 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color:brown;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #2a6496;
+  color:black;
   text-decoration: underline;
 }
 
@@ -351,14 +448,17 @@ a:focus {
   outline-offset: -2px;
 }
 
+
+
+
 img {
   vertical-align: middle;
 }
 
 .img-responsive {
   display: block;
-  height: auto;
-  max-width: 100%;
+  height: 50%;
+  width: 50%;
 }
 
 .img-rounded {
@@ -401,7 +501,7 @@ hr {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 10px 0 10px;
 }
 
 .lead {
@@ -1243,7 +1343,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1300px;
   }
   .col-lg-1,
   .col-lg-2,
@@ -1655,7 +1755,9 @@ label {
   display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
+  font-size:medium;
 }
+
 
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -4193,9 +4295,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
+  padding: 10px 15px;
+  /*margin-top:20px;*/
   font-size: 18px;
-  line-height: 40px;
+  line-height: 20px;
 }
 
 .navbar-brand:hover,
@@ -4280,8 +4383,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 25px;
-    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
   }
 }
 
@@ -4501,8 +4604,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color:darkslateblue;
-  border-color:blueviolet;
+	/*background-color: rebeccapurple;*/
+	background: radial-gradient(circle, rgba(245,39,129,1) 0%, rgba(63,136,222,1) 100%);
+	border-color: none;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4525,7 +4629,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-color:darkorange;
+color:black;
 background-color:transparent;
 /*border-radius: 1%;*/
 }
@@ -5282,7 +5386,7 @@ a.thumbnail:focus {
 }
 
 a.list-group-item {
-  color: #555555;
+  color:black;
 }
 
 a.list-group-item .list-group-item-heading {
@@ -6005,13 +6109,19 @@ body.modal-open,
 }
 
 .carousel {
-  position: relative;
+	position: relative;
+	width: 60%;
+	height: 60%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .carousel-inner {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .carousel-inner > .item {
@@ -6024,8 +6134,8 @@ body.modal-open,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  height: auto;
-  max-width: 100%;
+  height: 100%;
+  width: 100%;
   line-height: 1;
 }
 
@@ -6036,7 +6146,8 @@ body.modal-open,
 }
 
 .carousel-inner > .active {
-  left: 0;
+		left: 0;
+		
 }
 
 .carousel-inner > .next,
@@ -6082,12 +6193,14 @@ body.modal-open,
 }
 
 .carousel-control.left {
-  background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
-  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0), color-stop(rgba(0, 0, 0, 0.0001) 100%));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+		left: 0;
+		right: auto;
+		background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+		background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+		background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 
 .carousel-control.right {

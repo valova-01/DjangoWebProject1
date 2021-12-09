@@ -14,7 +14,7 @@
 
 {% if user.is_authenticated %}
     <h3 style="font-size:x-large">Добавить комментарий</h3>
-    <form method="POST" >{% csrf_token %} {# защита от атак CSRF#}
+    <form method="POST">{% csrf_token %} {# защита от атак CSRF#}
     <div>
         {{form.as_p}}
         <button type="submit" class="save btn btn-default" > Отправить комментарий </button>

@@ -4,6 +4,7 @@ Definition of views.
 
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from datetime import datetime
 from .forms import AnketaForm
@@ -14,6 +15,14 @@ from .models import Blog
 from .models import Comment # использование модели комментариев
 from .forms import CommentForm # использование формы ввода комментария
 from .forms import BlogForm # использование формы для добавления статьи 
+from django.shortcuts import get_object_or_404
+from .forms import AnketaForm
+from .models import Category, Product
+from cart.forms import CartAddProductForm
+
+from orders.models import Order, OrderItem
+
+
 
 
 def home(request):
@@ -204,3 +213,53 @@ def videopost(request):
             'year':datetime.now().year,
         }
     )
+def product_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request,
+                  'app/product_list.html', #Путь до файла с каталогом
+                  {'category': category,
+                   'categories': categories,
+                   'products': products})
+
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product,
+                                id=id,
+                                slug=slug,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'app/detail.html', {'product': product, #Поменять путь, если не сработает
+                                                        'cart_product_form': cart_product_form})
+def my_orders(request):
+    
+    if Order.objects.filter(nickname=request.user):
+
+        product_ordered = OrderItem.objects.filter(order__nickname=request.user)
+        
+        assert isinstance (request, HttpRequest)
+        return render (
+            request,
+            'app/my_orders.html', { 'product_ordered': product_ordered, 'my_orders': my_orders}
+            )
+    else:
+        return redirect ('empty')
+
+
+def empty (request):
+     
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/empty.html',
+        {
+            'title':'Мои заказы',
+            'year':datetime.now().year,
+        }
+    )
+
+

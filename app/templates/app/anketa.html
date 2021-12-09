@@ -1,7 +1,10 @@
 ﻿{% extends "app/layout.html" %}
+
 {% block content %}
+
+
 {% if form != None %}
-   <br><h2 style=" font-family:fantasy; text-align:center">Отправьте ваш отзыв</h2><br>
+   <br><h2 style=" font-family:fantasy; text-align:center">Пожалуйста пройдите опрос</h2><br>
     <div>
         <form method="POST">
         {% csrf_token %}
@@ -25,7 +28,7 @@
         </form>
     </div>
 {% else %}
-    <br><h2 style="font-family:fantasy">!!! Благодарим за ваш отзыв !!!</h2>
+    <br><h2 style="font-family:fantasy">!!! Благодарим за ваш ответ !!!</h2>
     <h3>Вы сообщили нам следующую информацию:</h3>
     <ul>
         <li><span>Имя:</span> {{ data.name }}</li>

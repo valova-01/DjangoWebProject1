@@ -8,6 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from .models import Comment
 from .models import Blog
+from django.contrib import admin
+from .models import Category, Product
+
+
 
 class BootstrapAuthenticationForm(AuthenticationForm):
     """Authentication form which uses boostrap CSS."""
@@ -47,3 +51,17 @@ class BlogForm (forms.ModelForm):
         model = Blog
         fields = ('title', 'description', 'content', 'image',)
         labels = {'title': "Заголовок", 'description': "Краткое содержание", 'content': "Полное содержание", 'image': "Картинка",}
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+admin.site.register(Category, CategoryAdmin)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug', 'price', 'stock', 'available', 'created', 'updated']
+    list_filter = ['available', 'created', 'updated']
+    list_editable = ['price', 'stock', 'available']
+    prepopulated_fields = {'slug': ('name',)}
+admin.site.register(Product, ProductAdmin)
+

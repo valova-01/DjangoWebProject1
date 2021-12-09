@@ -12,14 +12,17 @@ p1{
     text-align: center;
 }
 
-
 .left {
 	float: left;
 	margin: 0 1em 1em 0;
 }
-h5 {
-	color:green;
+hr1 {
+	border: none; /* ”бираем границу дл€ браузера Firefox */
+	color: black; /* ÷вет линии дл€ остальных браузеров */
+	background-color: black; /* ÷вет линии дл€ браузера Firefox и Opera */
+	height: 1px;
 }
+
 
 ul1, ul2 {
 	list-style: none;
